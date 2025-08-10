@@ -22,3 +22,16 @@ services:
       - ./staticfiles:/static:ro
     ports:
       - "8080:80"
+services:
+  - type: web
+    name: novabiz
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
