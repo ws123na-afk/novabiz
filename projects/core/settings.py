@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+import os
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", os.environ.get("RENDER_EXTERNAL_HOSTNAME")]
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
