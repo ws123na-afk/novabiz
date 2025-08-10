@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    environment:
+      DJANGO_SECRET_KEY: "dev-secret-change-me"
+      DJANGO_DEBUG: "true"
+      ALLOWED_HOSTS: "*"
+      NOVABIZ_WHATSAPP: "056-0000000"
+      NOVABIZ_BRAND: "NovaBiz"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - web
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./staticfiles:/static:ro
+    ports:
+      - "8080:80"

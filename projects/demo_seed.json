@@ -1,0 +1,19 @@
+[
+  {"model":"store.category","pk":1,"fields":{"name":"Skincare"}},
+  {"model":"store.category","pk":2,"fields":{"name":"Wellness"}},
+  {"model":"store.category","pk":3,"fields":{"name":"Food"}},
+  {"model":"store.category","pk":4,"fields":{"name":"Beverage"}},
+  {"model":"store.category","pk":5,"fields":{"name":"Auto Parts"}},
+  {"model":"store.category","pk":6,"fields":{"name":"Electronics"}},
+
+  {"model":"store.product","pk":1,"fields":{"name":"Vitamin C Serum","description":"Brightening skincare","price_aed":"99.00","category":1,"image_url":"https://images.unsplash.com/photo-1585238341986-4c41463faf3d","vendor":"BeautyHub"}},
+  {"model":"store.product","pk":2,"fields":{"name":"Massage Oil","description":"Relaxing spa oil","price_aed":"45.00","category":2,"image_url":"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd","vendor":"SpaCo"}},
+  {"model":"store.product","pk":3,"fields":{"name":"Karak Tea Pack","description":"Authentic mix","price_aed":"15.00","category":4,"image_url":"https://images.unsplash.com/photo-1509440159596-0249088772ff","vendor":"Emirates Café"}},
+  {"model":"store.product","pk":4,"fields":{"name":"Shawarma Kit","description":"DIY shawarma set","price_aed":"49.00","category":3,"image_url":"https://images.unsplash.com/photo-1604908176997-4312f2fe5c9f","vendor":"Emirates Café"}},
+  {"model":"store.product","pk":5,"fields":{"name":"Car Battery 70Ah","description":"Maintenance-free","price_aed":"320.00","category":5,"image_url":"https://images.unsplash.com/photo-1542362567-b07e54358753","vendor":"AutoTech UAE"}},
+  {"model":"store.product","pk":6,"fields":{"name":"Dash Cam 1080p","description":"Night vision","price_aed":"199.00","category":6,"image_url":"https://images.unsplash.com/photo-1518770660439-4636190af475","vendor":"AutoTech UAE"}},
+
+  {"model":"booking.service","pk":1,"fields":{"name":"Oil Change","description":"Standard oil & filter change","price_aed":"120.00","duration_minutes":60}},
+  {"model":"booking.service","pk":2,"fields":{"name":"Spa Massage","description":"Full-body massage","price_aed":"220.00","duration_minutes":60}},
+  {"model":"booking.service","pk":3,"fields":{"name":"Table Reservation","description":"Reserve a table","price_aed":"0.00","duration_minutes":90}}
+]

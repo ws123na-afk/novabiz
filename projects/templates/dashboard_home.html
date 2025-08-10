@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+<p class="mb-2">Public demo dashboard (demouser). KPIs below:</p>
+<ul class="list-disc pl-6">
+  <li>Orders: <strong>{{ orders_count }}</strong></li>
+  <li>Bookings: <strong>{{ bookings_count }}</strong></li>
+  <li>Leads: <strong>{{ leads_count }}</strong></li>
+</ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" dir="{% if request.GET.ar %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ NOVABIZ_BRAND }}</title>
+  <link rel="manifest" href="/static/pwa/manifest.webmanifest">
+  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/static/pwa/sw.js');}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>.wa-float{position:fixed;right:16px;bottom:16px;border-radius:9999px;padding:12px 16px;background:#25D366;color:#fff;font-weight:700;box-shadow:0 10px 20px rgba(0,0,0,.15);}</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<header class="bg-white shadow">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="font-bold text-xl">{{ NOVABIZ_BRAND }}</a>
+    <nav class="space-x-4">
+      <a href="/store/" class="hover:underline">Store</a>
+      <a href="/booking/" class="hover:underline">Booking</a>
+      <a href="/crm/" class="hover:underline">Contact</a>
+      <a href="/dashboard/" class="hover:underline">Dashboard</a>
+      {% if NOVABIZ_MARKETPLACE_ENABLED %}<a href="/marketplace/" class="hover:underline">Marketplace</a>{% endif %}
+      <a href="/accounts/demo-login/" class="hover:underline">Demo Login</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-8">{% block content %}{% endblock %}</main>
+<a class="wa-float" href="https://wa.me/{{ NOVABIZ_WHATSAPP|default:'971000000000'|replace(' ','')|replace('-','') }}" target="_blank">WhatsApp</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Checkout (Demo)</h1>
+<p class="mb-4">Total: <strong>AED {{ order.total_aed }}</strong></p>
+
+<form id="pay" method="post" action="/payments/start/" class="space-x-2">
+  {% csrf_token %}
+  <input type="hidden" name="amount" value="{{ order.total_aed }}">
+  <select name="method" class="border p-2 rounded">
+    <option value="stripe">Stripe</option>
+    <option value="paypal">PayPal</option>
+  </select>
+  <button class="px-4 py-2 bg-black text-white rounded">Pay</button>
+</form>
+
+<script>
+const f=document.getElementById('pay');
+f.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data=new FormData(f);
+  const res=await fetch(f.action,{method:'POST',body:data,headers:{'X-Requested-With':'fetch'}});
+  const j=await res.json();
+  if(j.ok){ window.location='/store/checkout/success/'; } else { alert('Payment failed'); }
+});
+</script>
+{% endblock %}

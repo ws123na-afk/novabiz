@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Products</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {% for p in products %}
+  <div class="bg-white rounded-xl shadow">
+    {% if p.image_url %}<img src="{{ p.image_url }}" class="w-full h-40 object-cover rounded-t-xl">{% endif %}
+    <div class="p-4">
+      <div class="text-xs text-gray-500">{{ p.vendor }}</div>
+      <h3 class="font-semibold">{{ p.name }}</h3>
+      <p class="text-sm text-gray-600">{{ p.description|truncatechars:120 }}</p>
+      <div class="mt-3 font-bold">AED {{ p.price_aed }}</div>
+      <a href="/store/add/{{ p.id }}/" class="inline-block mt-3 px-3 py-1 rounded bg-black text-white">Add to Cart</a>
+    </div>
+  </div>
+  {% empty %}
+  <p>No products yet. Add some in <a class="underline" href="/admin/">admin</a>.</p>
+  {% endfor %}
+</div>
+{% endblock %}

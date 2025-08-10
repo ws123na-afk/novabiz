@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">All‑in‑One Business Demo</h1>
+<p class="mb-4">Switch between sample businesses. Marketplace mode is enabled.</p>
+<div class="mb-6">
+  <span class="mr-2">Switch business:</span>
+  {% for slug,label in BUSINESS_CHOICES %}
+    <a href="/switch/{{ slug }}/" class="px-3 py-1 rounded border mr-2 hover:bg-gray-100 {% if slug == CURRENT_BUSINESS %}bg-black text-white{% endif %}">{{ label }}</a>
+  {% endfor %}
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <a href="/store/" class="p-6 bg-white rounded-xl shadow hover:shadow-md">
+    <h2 class="text-xl font-semibold mb-2">Online Store</h2><p>Browse products, add to cart, checkout.</p>
+  </a>
+  <a href="/booking/" class="p-6 bg-white rounded-xl shadow hover:shadow-md">
+    <h2 class="text-xl font-semibold mb-2">Book a Service</h2><p>Real-time slot booking & confirmation.</p>
+  </a>
+  <a href="/crm/" class="p-6 bg-white rounded-xl shadow hover:shadow-md">
+    <h2 class="text-xl font-semibold mb-2">Contact / Quote</h2><p>Leads are saved to the admin CRM.</p>
+  </a>
+</div>
+
+<div class="mt-8 p-6 bg-white rounded-xl shadow">
+  <h3 class="text-lg font-semibold mb-2">Instant Quote (Demo)</h3>
+  <form id="qf" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <input class="border p-2 rounded" type="number" id="pages" placeholder="Pages (e.g., 5)">
+    <select class="border p-2 rounded" id="module">
+      <option value="basic">Basic</option><option value="ecom">E‑commerce</option>
+      <option value="booking">Bookings</option><option value="both">E‑comm + Bookings</option>
+    </select>
+    <select class="border p-2 rounded" id="speed">
+      <option value="normal">7 days</option><option value="rush">3 days (rush)</option>
+    </select>
+    <button type="button" onclick="calc()" class="px-4 py-2 bg-black text-white rounded">Calculate</button>
+  </form>
+  <div id="qout" class="mt-3 font-bold"></div>
+</div>
+
+<script>
+function calc(){
+  const pages=parseInt(document.getElementById('pages').value||'0');
+  const module=document.getElementById('module').value;
+  const speed=document.getElementById('speed').value;
+  let base=1500; base+=pages*200;
+  if(module==='ecom') base+=2000; if(module==='booking') base+=1500; if(module==='both') base+=3200;
+  if(speed==='rush') base*=1.25;
+  document.getElementById('qout').innerText='Estimated: AED '+Math.round(base);
+}
+</script>
+{% endblock %}
