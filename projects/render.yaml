@@ -1,17 +1,21 @@
 services:
   - type: web
-    name: novabiz-max
+    name: my-django-app
     env: docker
     plan: free
     autoDeploy: true
+    # If you didn’t bake collectstatic into the Dockerfile, do it here:
+    buildCommand: |
+      python -m pip install --upgrade pip
+      python manage.py collectstatic --noinput
+    startCommand: ""
+    healthCheckPath: /
     envVars:
-      - key: DJANGO_SECRET_KEY
-        generateValue: true
-      - key: DJANGO_DEBUG
-        value: "false"
+      - key: SECRET_KEY
+        value: # set in dashboard, keep secret
       - key: ALLOWED_HOSTS
-        value: "*"
-      - key: NOVABIZ_WHATSAPP
-        value: "056-0000000"
-      - key: NOVABIZ_BRAND
-        value: "NovaBiz"
+        value: my-django-app.onrender.com
+      - key: DATABASE_URL
+        sync: false  # set via dashboard (from Render Postgres)
+      - key: DEBUG
+        value: "0"
